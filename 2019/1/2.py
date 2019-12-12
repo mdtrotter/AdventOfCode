@@ -11,10 +11,13 @@ for i in file:
         sum += math.trunc((int(i)/3)) - 2
 
 fuel = sum
+exFuel = 0
 
 while fuel > 0:
     print(fuel)
     fuel = math.trunc((int(fuel)/3)) - 2
-    sum += fuel
+    exFuel += fuel
 
-print(sum)
+exFuel += sum
+
+print(exFuel)
