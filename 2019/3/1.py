@@ -23,7 +23,8 @@ arr[r][c] = 'o'
 def printCross():
     global c, r, closestMD
     print("location of cross: " + str(c) + ", " + str(r))
-    num = (abs(int(size/2) - c) + abs(int(size/2) - r))
+    num = (abs(int(size/2) - c-1) + abs(int(size/2) - r-1))
+    print("MD is " + str(num))
     if num < closestMD:
         closestMD = num
 
@@ -39,7 +40,7 @@ def right():
             arr[r][c] = 'X'
             printCross()
         move -= 1
-    arr[r][c] = str(wireNum)
+
 
 def left():
     global c, r, move, wireNum
@@ -53,7 +54,6 @@ def left():
             arr[r][c] = 'X'
             printCross()
         move -= 1
-    arr[r][c] = str(wireNum)
 
 def up():
     global c, r, move, wireNum
@@ -67,7 +67,6 @@ def up():
             arr[r][c] = 'X'
             printCross()
         move -= 1
-    arr[r][c] = str(wireNum)
 
 def down():
     global c, r, move, findInt
@@ -81,7 +80,6 @@ def down():
             arr[r][c] = 'X'
             printCross()
         move -= 1
-    arr[r][c] = str(wireNum)
 
 #loop through input file and fill out matrix
 for i in file:
@@ -90,12 +88,16 @@ for i in file:
         print("c is: " + str(c) + " r is: " + str(r))
         move = int(j[1:])
         if j[0] == 'R':
+            print("move right: " + str(j[1:]))
             right()
         if j[0] == 'L':
+            print("move left: " + str(j[1:]))
             left()
         if j[0] == 'U':
+            print("move up: " + str(j[1:]))
             up()
         if j[0] == 'D':
+            print("move down: " +str(j[1:]))
             down()
     #wire done, reset to central node
     wireNum += 1
